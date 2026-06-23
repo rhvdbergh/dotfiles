@@ -1,0 +1,53 @@
+# Everything is ignored by default via the opt-in model (status.showUntrackedFiles no).
+# Entries below are hard-excluded so they can never be staged by accident
+# — belt-and-suspenders for a public repo.
+
+# macOS noise
+.DS_Store
+
+# ~/.config noise & secrets
+.config/tmux-*.log
+.config/gh/hosts.yml
+.config/github-copilot/
+.config/starship_backup.toml
+
+# tmux: plugins are managed by tpm — clone tpm manually on a new machine
+.config/tmux/plugins/
+.config/tmux/xaa
+
+# karabiner: automatic_backups are app-generated noise
+.config/karabiner/automatic_backups/
+
+# Claude Code: keep CLAUDE.md, settings.json, hooks/, statusline-command.sh
+# Exclude all runtime, session, cache, and project-specific data
+.claude/backup
+.claude/backups/
+.claude/cache/
+.claude/debug/
+.claude/file-history/
+.claude/history.jsonl
+.claude/ide/
+.claude/mcp-needs-auth-cache.json
+.claude/mjl-docs/
+.claude/paste-cache/
+.claude/plans/
+.claude/plugins/
+.claude/policy-limits.json
+.claude/projects/
+.claude/remote-settings.json
+.claude/session-env/
+.claude/session-reviews/
+.claude/sessions/
+.claude/shell-snapshots/
+.claude/skills/
+.claude/stats-cache.json
+.claude/tasks/
+.claude/todos/
+.claude/usage-data/
+.claude/.last-cleanup
+.claude/.last_*
+# peon-ping runtime state
+.claude/hooks/peon-ping/.last_update_check
+.claude/hooks/peon-ping/.paused
+.claude/hooks/peon-ping/.sound.pid
+.claude/hooks/peon-ping/.state.json
