@@ -37,3 +37,5 @@ Always address me as Mr. Plankton.
 - When in plan mode, if I ask to save a file to memory, prepend the file with `mem-` - note that I will refer to these files as mem- files, if I need you to look them up
 - When saving the plan (post plan-mode), rename it inside `~/.claude/plans/` using the format `<repo>_<YYYY-MM-DD>_<descriptive-slug>.md`. Derive `<repo>` from `git rev-parse --show-toplevel` (basename), falling back to `no-repo` when not in a git repo. Use today's date. Always tell me the final filename.
 - The `mem-` prefix convention layers on top of the filename format: `mem-<repo>_<YYYY-MM-DD>_<slug>.md`.
+
+@RTK.md
