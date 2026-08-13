@@ -3,42 +3,82 @@
     "allow": [
       "Agent",
       "Bash(awk:*)",
+      "Bash(rtk awk:*)",
       "Bash(basename:*)",
+      "Bash(rtk basename:*)",
       "Bash(cat:*)",
+      "Bash(rtk cat:*)",
       "Bash(dotnet build:*)",
+      "Bash(rtk dotnet build:*)",
       "Bash(dotnet restore:*)",
+      "Bash(rtk dotnet restore:*)",
       "Bash(dotnet test:*)",
+      "Bash(rtk dotnet test:*)",
       "Bash(echo:*)",
+      "Bash(rtk echo:*)",
       "Bash(find:*)",
+      "Bash(rtk find:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git rev-parse:*)",
       "Bash(git show:*)",
+      "Bash(rtk git branch:*)",
+      "Bash(rtk git diff:*)",
+      "Bash(rtk git log:*)",
+      "Bash(rtk git rev-parse:*)",
+      "Bash(rtk git show:*)",
+      "Bash(rtk git status:*)",
       "Bash(grep -R:*)",
+      "Bash(rtk grep -R:*)",
       "Bash(grep:*)",
+      "Bash(rtk grep:*)",
       "Bash(head:*)",
+      "Bash(rtk head:*)",
       "Bash(less:*)",
+      "Bash(rtk less:*)",
       "Bash(ls:*)",
+      "Bash(rtk ls:*)",
+      "Bash(mkdir -p ~/.claude/diff-explanations:*)",
+      "Bash(open ~/.claude/diff-explanations/:*)",
       "Bash(npm install:*)",
+      "Bash(rtk npm install:*)",
       "Bash(npm run build:*)",
+      "Bash(rtk npm run build:*)",
       "Bash(npm run lint:*)",
+      "Bash(rtk npm run lint:*)",
       "Bash(npm test:*)",
+      "Bash(rtk npm test:*)",
       "Bash(npx tsc:*)",
+      "Bash(rtk npx tsc:*)",
       "Bash(npx vitest run:*)",
+      "Bash(rtk npx vitest run:*)",
       "Bash(nuke compile:*)",
+      "Bash(rtk nuke compile:*)",
       "Bash(poetry run mypy:*)",
+      "Bash(rtk poetry run mypy:*)",
       "Bash(poetry run ruff:*)",
+      "Bash(rtk poetry run ruff:*)",
       "Bash(rg:*)",
+      "Bash(rtk rg:*)",
       "Bash(ripgrep:*)",
+      "Bash(rtk ripgrep:*)",
       "Bash(sed -n:*)",
+      "Bash(rtk sed -n:*)",
       "Bash(sort:*)",
+      "Bash(rtk sort:*)",
       "Bash(tail:*)",
+      "Bash(rtk tail:*)",
       "Bash(tree:*)",
+      "Bash(rtk tree:*)",
       "Bash(uniq:*)",
+      "Bash(rtk uniq:*)",
       "Bash(wc:*)",
+      "Bash(rtk wc:*)",
       "Bash(xargs:*)",
+      "Bash(rtk xargs:*)",
+      "Edit(~/.claude/diff-explanations/**)",
       "Find(**)",
-      "Glob(**)",
+      "Read(**)",
       "Grep(**)",
       "LS(**)",
       "NotebookRead(**)",
@@ -48,7 +88,7 @@
       "mcp__context7__resolve-library-id"
     ]
   },
-  "model": "opusplan",
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -57,6 +97,11 @@
           {
             "type": "command",
             "command": "/Users/ronaldvanderbergh/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
             "timeout": 10
           }
         ]
@@ -70,6 +115,12 @@
             "type": "command",
             "command": "/Users/ronaldvanderbergh/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -85,8 +136,14 @@
           },
           {
             "type": "command",
-            "command": "printf '\\a'",
+            "command": "/Users/ronaldvanderbergh/.claude/hooks/ring-pane-bell.sh",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -102,8 +159,19 @@
           },
           {
             "type": "command",
-            "command": "printf '\\a'",
+            "command": "/Users/ronaldvanderbergh/.claude/hooks/ring-pane-bell.sh",
             "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -116,6 +184,17 @@
             "type": "command",
             "command": "/Users/ronaldvanderbergh/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.claude/hooks/ring-pane-bell.sh",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
+            "timeout": 10,
+            "async": true
           }
         ]
       }
@@ -130,6 +209,45 @@
           }
         ]
       }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.config/tmux/plugins/tmux-pane-tree/scripts/features/hooks/hook-claude.sh",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -137,12 +255,28 @@
     "command": "bash /Users/ronaldvanderbergh/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "mjl-code@ai-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "ai-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "Monkeyjump-Labs/ai-plugins"
+      }
+    }
+  },
+  "sandbox": {
+    "filesystem": {
+      "allowWrite": [
+        "~/.claude/diff-explanations/**"
+      ]
+    }
   },
   "effortLevel": "medium",
+  "tui": "fullscreen",
   "theme": "dark-daltonized",
   "editorMode": "vim",
   "verbose": true,
-  "skipAutoPermissionPrompt": true,
-  "tui": "fullscreen"
+  "skipAutoPermissionPrompt": true
 }

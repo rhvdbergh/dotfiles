@@ -7,6 +7,7 @@ model=$(echo "$input" | jq -r '.model.display_name')
 used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 rate_used=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 rate_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
+session_id=$(echo "$input" | jq -r '.session_id // empty')
 
 # Short directory name (basename, with $HOME replaced by ~)
 home="$HOME"
@@ -79,6 +80,26 @@ if [ -n "$rate_used" ]; then
     fi
   fi
   line+=$(printf " ★ ${color}5h:%.0f%%%s${RESET}" "$rate_used" "$reset_str")
+fi
+
+# Active review-loop skill (session-review-loop / review-pr-comments-loop)
+if [ -n "$session_id" ]; then
+  status_file="$HOME/.claude/skill-status/${session_id}.json"
+  if [ -f "$status_file" ]; then
+    now=$(date +%s)
+    status_ts=$(jq -r '.updated_at // 0' "$status_file" 2>/dev/null)
+    age=$((now - status_ts))
+    if [ "$age" -lt 1200 ]; then
+      MAGENTA='\033[0;35m'
+      skill_name=$(jq -r '.skill // empty' "$status_file" 2>/dev/null)
+      skill_detail=$(jq -r '.detail // empty' "$status_file" 2>/dev/null)
+      if [ -n "$skill_name" ]; then
+        line+=$(printf " ${MAGENTA}⟲ %s${RESET} %s" "$skill_name" "$skill_detail")
+      fi
+    else
+      rm -f "$status_file" 2>/dev/null
+    fi
+  fi
 fi
 
 printf "%b" "$line"
