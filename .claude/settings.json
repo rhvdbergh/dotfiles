@@ -8,6 +8,8 @@
       "Bash(rtk basename:*)",
       "Bash(cat:*)",
       "Bash(rtk cat:*)",
+      "Bash(claude-find:*)",
+      "Bash(rtk claude-find:*)",
       "Bash(dotnet build:*)",
       "Bash(rtk dotnet build:*)",
       "Bash(dotnet restore:*)",
@@ -88,7 +90,7 @@
       "mcp__context7__resolve-library-id"
     ]
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -210,6 +212,19 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/ronaldvanderbergh/.claude/hooks/check-comment-narration.sh",
+            "timeout": 10,
+            "statusMessage": "Checking comments"
+          }
+        ]
+      }
+    ],
     "SubagentStop": [
       {
         "matcher": "",
@@ -266,6 +281,7 @@
       }
     }
   },
+  "outputStyle": "Simplified Technical English",
   "sandbox": {
     "filesystem": {
       "allowWrite": [
