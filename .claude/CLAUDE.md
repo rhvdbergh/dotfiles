@@ -28,6 +28,13 @@ Always address me as Mr. Plankton.
 - The only valid reason to comment: a non-obvious constraint, tradeoff, workaround, or gotcha that isn't recoverable from reading the code itself (e.g. "retrying here because the vendor API silently drops writes under load").
 - Never leave comments that narrate what was done in response to a prompt, task, or conversation (e.g. "added for X flow", "fixed per user request", "changed to address Y issue"). Comments must stand alone as if no conversation ever happened — they describe the code's own logic, not its history.
 - If you're tempted to write a comment explaining what code does, rename the variable/function instead and delete the comment.
+- **The conversation is sealed off from the code. NOTHING from our discussion, the plan document, the ticket, or the PR thread may appear in a comment.** Specifically, never:
+  - Address me, or any reader, in a comment. No second person ("you'll notice", "as you asked", "note that if you"), no first person ("I chose", "I've left this"), no questions, no hedging at a reader.
+  - Answer a question I asked. If I asked something in chat or in a `%%` note, the answer belongs in your reply to me — never in the code.
+  - Explain or justify a decision that was discussed. If we debated an approach and picked one, the code contains the approach; the debate goes nowhere. The *only* exception is when the losing option would otherwise look like an obvious improvement to a future reader with no context — then state the constraint impersonally ("the batched call is not usable here: the vendor endpoint caps at 50 ids"), never the discussion ("we went with the loop because you said batching was risky").
+  - Reference the plan, the ticket, the review, or the request in any form — no "per the plan", "step 3", "as discussed", "requested change", ticket ids, or dates.
+  - Flag something as new, changed, moved, or temporary relative to what existed before. The diff shows that; the comment outlives it.
+- The test: if a comment would read as strange or meaningless to someone who finds this file in two years knowing nothing about you, me, or this task, it must not exist. A comment describes the code as it stands, to a stranger, forever.
 
 ## Questions
 
@@ -72,5 +79,17 @@ Always address me as Mr. Plankton.
 - The `mem-` prefix convention layers on top of the filename format: `mem-<repo>_<YYYY-MM-DD>_<slug>.md`.
 - Before resuming any saved plan, re-verify it against current code and the masterplan (plans go stale after other tickets land). State up front whether the plan is current, stale, or already implemented.
 - When writing RFCs/plans, include rationale + implementation only — no "Open Questions" section unless I ask.
+- Every plan file MUST end with the following section, copied verbatim as its final section. This is the one exception to the "rationale + implementation only" rule above. Re-read this section immediately before writing any code from the plan, and treat it as binding during implementation:
+
+  ```markdown
+  ## Comment Policy (binding during implementation)
+
+  - Comments explain *why*, never *what*. Code is self-explanatory via naming; a comment restating what a line does is a defect and must be deleted.
+  - The ONLY valid comment is a non-obvious constraint, tradeoff, workaround, or gotcha that cannot be recovered from reading the code (e.g. "retrying here because the vendor API silently drops writes under load").
+  - **This conversation, this plan, and this ticket are sealed off from the code. NONE of it may appear in a comment.** Never address the reader or use second person ("you'll notice", "as requested"). Never use first person ("I chose", "I've left"). Never answer in a comment a question that was asked in chat or in a `%%` note — that answer goes in the reply, not the code. Never justify a decision by referring to the discussion that produced it. Never cite the plan, a step number, a ticket id, a review, or a date. Never mark anything as new, changed, moved, or temporary.
+  - Where a discussed constraint genuinely needs recording, state it impersonally as a fact about the system ("the vendor endpoint caps at 50 ids"), never as history ("we decided to loop instead").
+  - Tempted to explain what code does? Rename the variable/function instead and write no comment.
+  - Before finishing, re-read every comment added or touched. Delete any that fails these rules, and any that would read as strange or meaningless to a stranger finding this file in two years with no knowledge of this task.
+  ```
 
 @RTK.md
