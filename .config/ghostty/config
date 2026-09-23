@@ -49,16 +49,21 @@
 # resize-overlay-duration = 4s 200ms
 
 keybind = global:alt+space=toggle_quick_terminal
-font-size = 16
+font-size = 16 
 quick-terminal-position = center
-#quick-terminal-size = 100%,100%
+quick-terminal-size = 50%,80%
 theme = Gruvbox Dark
 palette = 1=#ea6962
-#quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
 cursor-style = block
 cursor-style-blink = true
 background-opacity = 0.965
+
+# mouse
+copy-on-select = true
+
+# copy and paste
+clipboard-read = allow
 
 #custom-shader = ~/.config/ghostty/shaders/blooom.glsl
 #custom-shader = ~/.config/ghostty/shaders/cineShader-Lava.glsl
