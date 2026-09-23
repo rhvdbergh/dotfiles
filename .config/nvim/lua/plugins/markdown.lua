@@ -14,8 +14,8 @@ return {
 
     checkbox = {
       enabled = true,
-      checked = " ",
-      unchecked = " ",
+      checked = { icon = " " },
+      unchecked = { icon = " " },
       custom = {
         todo = { raw = "[-]", rendered = "󰥔 " },
       },
