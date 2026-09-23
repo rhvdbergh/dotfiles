@@ -14,6 +14,8 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 vim.api.nvim_create_autocmd("VimLeave", {
   callback = function()
     os.execute("kill -WINCH " .. tostring(vim.uv.os_getppid()))
+    -- os.exit bypasses Neovim's normal shutdown, which is where shada is flushed
+    vim.cmd("silent! wshada")
     os.exit(0)
   end,
 })
