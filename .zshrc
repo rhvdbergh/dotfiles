@@ -300,3 +300,6 @@ source ~/.zsh_aliases
  prompt pure
 
 eval "$(zoxide init zsh)"
+
+# --- Claude Code session search ---
+alias cf='claude-find'
