@@ -95,9 +95,9 @@ gui:
   switchToFilesAfterStashApply: true
   switchTabsWithPanelJumpKeys: false
 os:
-  editPreset: nvim
+  editPreset: nvim-remote
 git:
-  pagers: []
+  diffRenderers: []
   commit:
     signOff: false
     autoWrapCommitMessage: true
@@ -218,7 +218,7 @@ keybinding:
     prevTab: "["
     nextScreenMode: +
     prevScreenMode: _
-    cyclePagers: "|"
+    cycleDiffRenderers: "|"
     undo: z
     redo: Z
     filteringMenu: <ctrl+s>
@@ -234,6 +234,7 @@ keybinding:
     increaseRenameSimilarityThreshold: )
     decreaseRenameSimilarityThreshold: (
     openDiffTool: <ctrl+t>
+    newWorktree: w
   status:
     checkForUpdate: u
     recentRepos: <enter>
@@ -279,8 +280,6 @@ keybinding:
     fetchRemote: f
     addForkRemote: F
     sortOrder: s
-  worktrees:
-    viewWorktreeOptions: w
   commits:
     squashDown: s
     renameCommit: r
