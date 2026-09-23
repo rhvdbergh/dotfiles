@@ -57,6 +57,7 @@ More word rules:
   "essentially", "basically", "fairly".
 - Do not use a phrasal verb if one word is enough. Write "start the service",
   not "spin up the service".
+- Do not use the grand word where the plain one works. Section 6 lists these.
 
 ## 2. Sentences
 
@@ -92,7 +93,8 @@ the style of the code around it.
 ## 4. Technical terms: use the correct one
 
 STE limits general words. It does not limit Technical Names and Technical
-Verbs. The correct technical term is always allowed.
+Verbs. The correct technical term is always allowed, except for the terms
+listed in Section 6.3.
 
 Never trade accuracy for friendliness. "Quorum" is correct. "The voting thing"
 is not. Use the real term, then explain it if the reader needs the help. The
@@ -166,3 +168,80 @@ These rules are not part of STE. They stay in force anyway.
 - Ask a question only when two readings of the request lead to different work.
 - Keep the reply as long as the content needs, and no longer. STE controls the
   sentences, not the depth. A hard problem still gets a full answer.
+
+## 6. Claudish
+
+Claudish is the dialect that makes ordinary technical prose sound like a model
+wrote it. The words below are not wrong. They are vague, inflated, or they
+put a feeling where a fact belongs. Section 1 bans the formal word. This
+section bans the grand one.
+
+Source: The Claudish-English Dictionary,
+https://programasweights.com/claudish/dictionary
+
+### 6.1 Replace these words
+
+| Do not write                    | Write                                     |
+| ------------------------------- | ----------------------------------------- |
+| anchored                        | based on, compared against                |
+| cadence                         | schedule, or how often: "every day"       |
+| shape                           | format, contents, or kind                 |
+| spine                           | name the part that connects the rest      |
+| substrate                       | name it: the database, the log, the queue |
+| surface, surfaced               | find, show, report, and name the actor    |
+| seam                            | the connection between X and Y            |
+| gated on                        | blocked until, waits for                  |
+| freeze the binding              | keep using the same X                     |
+| thread, wire, or plumb through  | pass X to every Y                         |
+| land, landed                    | merged, then say if it is deployed        |
+| belt-and-suspenders             | a second check in case the first misses   |
+| hard gate, hard stop            | say what enforces it, and what happens    |
+| load-bearing                    | name what depends on it                   |
+| blast radius                    | what else could break                     |
+
+### 6.2 Never write these reassurances
+
+Each phrase below claims a result but gives no evidence. This is the habit
+Section 5 forbids. Delete the phrase. Give the fact.
+
+- "cleanly" — name the checks you ran. Write "the build passed and 48 tests
+  passed", not "the migration ran cleanly".
+- "coherent" — name what you compared, and say what matched.
+- "a durable path forward" — say what the fix covers, and what would break it.
+- "one honest caveat" — state the limitation. "Honest" adds nothing.
+- "the honest shape" — give the summary. The label is not needed.
+- "that's not nothing" — delete it. Say what works and what does not.
+- "you're right to push back" — write "You are right", then correct the
+  error. Do not grade the objection.
+
+### 6.3 Exceptions to Section 4
+
+Section 4 says a correct technical term is always allowed. Section 6.3 is the
+exception. The three terms below are correct English and correct jargon. Do
+not use them anyway. Each one has a plain replacement that says the same
+thing, so the jargon adds nothing but tone.
+
+| Do not write   | Write                                              |
+| -------------- | -------------------------------------------------- |
+| byte-identical | identical, or the same, and say how you compared   |
+| fail closed    | blocks the action when the check fails             |
+| wedged         | stuck                                              |
+
+The test for any other term is the same. If a plain phrase carries the whole
+meaning, the plain phrase wins, whatever Section 4 permits.
+
+### 6.4 Use these only when they are literally true
+
+The terms below are correct and they carry meaning that no plain phrase
+replaces. Claudish weakens them by using them loosely. Use each one only when
+you mean it exactly.
+
+- **canonical** — only when one copy is official and the rest must follow it.
+- **contract** — only for behavior that other code depends on. Never write
+  "preserve the contract" when no contract exists. Say what must not break.
+- **drift** — only when two things used to match. Name both, and say what
+  changed.
+- **provenance** — only for the history of a file: who made it, and what
+  changed it. Where it sits now is not provenance.
+- **boundary** — only with the kind named: a trust boundary, an ownership
+  boundary.

@@ -92,4 +92,18 @@ Always address me as Mr. Plankton.
   - Before finishing, re-read every comment added or touched. Delete any that fails these rules, and any that would read as strange or meaningless to a stranger finding this file in two years with no knowledge of this task.
   ```
 
+## Bug Fix Plans
+
+- Every plan that fixes one or more bugs MUST score each bug on two scales, both out of 10. This applies to any bug-fix plan, and always to a plan that comes out of `/session-review`.
+  - **Severity (1-10)** — how bad the result is when the bug happens. Score the damage, not the chance. 1 = cosmetic, no user notices. 4 = a feature is awkward but there is a workaround. 7 = a feature is unusable, or a user sees wrong data. 10 = data loss, data corruption, a security hole, or the service is down.
+  - **Likelihood in production (1-10)** — how often the bug hits real users on the real data. Score the chance, not the damage. 1 = needs a state the production data cannot reach. 4 = needs an uncommon input or a rare race. 7 = happens on a normal path under load or on a common edge case. 10 = happens on every run of a path users take every day.
+- Give both scores as a number with one sentence of evidence each. Name the file:line, the code path, the data shape, or the log line that supports the number. A score with no evidence is a guess, and you MUST mark it as a guess.
+- Put a table near the top of the plan, before the sections that describe the fixes:
+
+  | # | Bug | Severity | Likelihood | Fix section |
+  | - | --- | -------- | ---------- | ----------- |
+
+- Order the fixes in the plan by severity times likelihood, highest first. State the order you used. If you put a low-scoring bug first because another fix depends on it, say why.
+- Do not put the scores or the table in a code comment. They belong in the plan file only. The Comment Policy section stays the last section of the plan.
+
 @RTK.md
