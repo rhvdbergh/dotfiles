@@ -1,4 +1,9 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "permissions": {
     "allow": [
       "Agent",
@@ -90,6 +95,7 @@
       "mcp__context7__resolve-library-id"
     ]
   },
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -289,6 +295,14 @@
     }
   },
   "effortLevel": "medium",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "medium"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "theme": "dark-daltonized",
   "editorMode": "vim",
