@@ -12,6 +12,13 @@ Always address me as Mr. Plankton.
 - NEVER create Git commits, push to or pull from origin, or make pull requests. I will always do this myself. You can make branches, but ONLY if I ask you to. You are allowed to create worktrees (locally, of course).
 - Use US spelling rather than British spelling.
 
+## ClickUp Ticket Style
+
+When writing or updating a ClickUp task description:
+- Write it as a product owner, for a non-technical reader: short user story, "Today", acceptance criteria, known edge cases, open questions
+- Keep the team template (Description / Out of scope / Acceptance criteria / Known edge cases); unknowns become open questions, never invented detail
+- Put all implementation detail (endpoints, slices, files) last, after `---`, under `### Technical notes`
+
 ## Worktrees
 
 - Before implementing any ticket, run `git rev-parse --show-toplevel` and `pwd` and confirm you are in the correct pre-created feature worktree. Never build or edit ticket code in the main repo checkout. If a worktree for the ticket exists, cd into it first and state which path you are working in.
